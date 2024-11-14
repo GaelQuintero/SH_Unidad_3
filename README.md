@@ -30,7 +30,11 @@ Este es un proyecto de gestión de empleados desarrollado con **Laravel**, **MyS
 ```bash
 git clone https://github.com/tu-usuario/gestor-empleados.git
 ```
-### 2. Ejecutar la aplicación
+### 2. Instalar elementos restantes
+```bash
+composer install
+```
+### 3. Ejecutar la aplicación
 ```bash
 php artisan serve
 ```
