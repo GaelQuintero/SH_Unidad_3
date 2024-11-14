@@ -22,13 +22,17 @@ Este es un proyecto de gestión de empleados desarrollado con **Laravel**, **MyS
 - **Composer** (para gestionar dependencias)
 - **MySQL** (para la base de datos)
 - **Node.js** y **npm** (para la gestión de dependencias frontend)
-
-## Requisitos
-
 - **Después de clonar el repositorio deberán configurar su propio archivo .env basado en el archivo .env.example proporcionado. Para hacerlo:**
 - **Copiar el archivo de ejemplo: cp .env.example .env.**
-- **Luego, ejecutar en la terminal dentro del proyecto y carpeta gestor-empleados composer install para instalar las dependencias de PHP y npm install o yarn install para las dependencias de JavaScript.** 
-
+- **Ejecutar en la terminal dentro del proyecto y carpeta gestor-empleados composer install para instalar las dependencias de PHP y npm install o yarn install para las dependencias de JavaScript.**
+- **Generar la clave del proyecto**
+```bash
+php artisan key:generate
+```
+- **Al final ejecutas la aplicación con:**
+```bash
+php artisan serve
+```
 ## Instalación
 
 ### 1. Clonar el repositorio
