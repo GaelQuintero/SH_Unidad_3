@@ -20,17 +20,7 @@
             rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Script para mostrar mensaje exitoso del registro del usuario -->
-        @if (session('success'))
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Cuenta registrada exitosamente!',
-                    text: '{{ session('success') }}',
-                    showConfirmButton: false,
-                    timer: 1800
-                });
-            </script>
-        @endif
+
         @if (session('error'))
         <script>
             Swal.fire({
@@ -42,6 +32,19 @@
             });
         </script>
     @endif
+
+    @if(session('success-logout'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Cerrando sesión!',
+            text: '{{ session('success-logout') }}',
+            showConfirmButton: false,
+            timer: 1800
+        });
+    </script>
+@endif
+
 
     </head>
 

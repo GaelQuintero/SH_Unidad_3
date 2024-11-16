@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,10 +34,16 @@ class AuthController extends Controller
        ];
 
        if (Auth::attempt($credenciales)) {
-        return redirect()->route('dashboard')->with('success', 'Haz iniciado sesión correctamente');
+        return redirect()->route('dashboard')->with('success-login', 'Ha iniciado sesión con exito');
        } else{
         return redirect()->route('login-empleado')->with('error', 'Verifique sus datos');
        }
+    }
+
+    public function logout(){
+       Session::flush();
+       Auth::logout();
+       return redirect()->route('login-empleado')->with('success-logout', 'La sesión se ha cerrado correctamente');
     }
 
     public function dashboard (){
