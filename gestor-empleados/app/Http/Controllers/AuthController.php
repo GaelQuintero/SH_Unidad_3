@@ -13,5 +13,9 @@ class AuthController extends Controller
     public function registroEmpleado (){
         return view("modules/auth/registro-empleado");
     }
+
+    public function registrarEmpleado (){
+        return view("modules/auth/registro-empleado");
+    }
 }
 
