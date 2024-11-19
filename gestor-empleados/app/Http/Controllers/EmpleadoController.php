@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Empleado;
+use Illuminate\Http\Request;
+
+class EmpleadoController extends Controller
+{
+    public function index()
+    {
+        $empleados = Empleado::all();
+        return view('empleados.index', compact('empleados'));
+    }
+
+    public function create()
+    {
+        return view('empleados.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'Nombre' => 'required|string|max:100',
+            'Apellido' => 'required|string|max:100',
+            'NumeroEmpleado' => 'required|string|max:50|unique:empleados',
+            'FechaRegistrado' => 'nullable|date',
+        ]);
+
+        Empleado::create($request->all());
+
+        return redirect()->route('empleados.index')->with('success', 'Empleado creado con éxito.');
+    }
+
+    public function show(Empleado $empleado)
+    {
+        return view('empleados.show', compact('empleado'));
+    }
+
+    public function edit(Empleado $empleado)
+    {
+        return view('empleados.edit', compact('empleado'));
+    }
+
+    public function update(Request $request, Empleado $empleado)
+    {
+        $request->validate([
+            'Nombre' => 'required|string|max:100',
+            'Apellido' => 'required|string|max:100',
+            'NumeroEmpleado' => 'required|string|max:50|unique:empleados,NumeroEmpleado,' . $empleado->idEmpleado,
+            'FechaRegistrado' => 'nullable|date',
+        ]);
+
+        $empleado->update($request->all());
+
+        return redirect()->route('empleados.index')->with('success', 'Empleado actualizado con éxito.');
+    }
+
+    public function destroy(Empleado $empleado)
+    {
+        $empleado->delete();
+        return redirect()->route('empleados.index')->with('success', 'Empleado eliminado con éxito.');
+    }
+}
