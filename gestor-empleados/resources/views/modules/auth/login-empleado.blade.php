@@ -18,44 +18,45 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Script para mostrar mensaje exitoso del registro del usuario -->
 
 
         @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: '¡Te has registrado correctamente!',
-                text: '{{ session('success') }}',
-                showConfirmButton: false,
-                timer: 1800
-            });
-        </script>
-    @endif
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Te has registrado correctamente!',
+                    text: '{{ session('success') }}',
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+            </script>
+        @endif
         @if (session('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: '¡Datos erroneos!',
-                text: '{{ session('error') }}',
-                showConfirmButton: false,
-                timer: 1800
-            });
-        </script>
-    @endif
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Datos erroneos!',
+                    text: '{{ session('error') }}',
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+            </script>
+        @endif
 
-    @if(session('success-logout'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: '¡Cerrando sesión!',
-            text: '{{ session('success-logout') }}',
-            showConfirmButton: false,
-            timer: 1800
-        });
-    </script>
-@endif
+        @if (session('success-logout'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Cerrando sesión!',
+                    text: '{{ session('success-logout') }}',
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+            </script>
+        @endif
 
 
     </head>
@@ -67,9 +68,9 @@
             <div class="row w-100 justify-content-center border-0">
                 <div class="col-12 col-md-6 col-lg-4">
                     <form action="{{ route('login') }}" method="POST" class="form-control p-4 border border-0 rounded-3 ">
-                       @csrf
+                        @csrf
 
-                       @method('POST')
+                        @method('POST')
                         <div class="mb-3">
 
                             <!-- Imagen arriba del formulario -->
@@ -88,12 +89,11 @@
                             <input type="password" placeholder="Password" name="password"
                                 class="form-control form-control-lg rounded-0" id="password">
                         </div>
-                        <!-- Aqui ira la api de Captcha
-                                    <div class="mb-3 form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                    </div>
-                                -->
+                        <!-- ReCAPTCHA Widget -->
+                        <div class="mb-3">
+                            <div class="g-recaptcha" data-sitekey="6LeSEH4qAAAAADzdajLaFODepSrxyiQxqGWILyvl"></div>
+
+                        </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button type="submit" class="btn btn-primary btn-lg w-100 rounded-5">Log <svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
