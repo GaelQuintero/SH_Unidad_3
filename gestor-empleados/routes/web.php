@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpleadoController;
+
+Route::resource('empleados', EmpleadoController::class);
 
 Route::middleware("guest")->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('login-empleado');
@@ -18,3 +21,4 @@ Route::middleware("auth")->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
