@@ -21,6 +21,18 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Script para mostrar mensaje exitoso del registro del usuario -->
 
+
+        @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '¡Te has registrado correctamente!',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 1800
+            });
+        </script>
+    @endif
         @if (session('error'))
         <script>
             Swal.fire({
